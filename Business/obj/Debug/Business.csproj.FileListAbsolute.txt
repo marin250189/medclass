@@ -1,0 +1,11 @@
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\Business.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\Business.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\obj\Debug\Business.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\obj\Debug\Business.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\DataAccess.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\Domain.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\EntityFramework.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\DataAccess.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\Domain.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\Business\bin\Debug\EntityFramework.xml

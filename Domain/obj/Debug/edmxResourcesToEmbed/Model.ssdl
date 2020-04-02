@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Quiz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="subjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MediclassDB.dbo.Quiz_Students' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Quiz_Students">
+    <Key>
+      <PropertyRef Name="quizId" />
+      <PropertyRef Name="studentId" />
+      <PropertyRef Name="grade" />
+    </Key>
+    <Property Name="quizId" Type="int" Nullable="false" />
+    <Property Name="studentId" Type="int" Nullable="false" />
+    <Property Name="grade" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MediclassDB.dbo.Student_Subject' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Student_Subject">
+    <Key>
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="char" MaxLength="1" />
+    <Property Name="age" Type="int" />
+    <Property Name="phoneNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="year" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user" />
+    </Key>
+    <Property Name="user" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Quiz_Students_Quiz">
+    <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+    <End Role="Quiz_Students" Type="Self.Quiz_Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz_Students">
+        <PropertyRef Name="quizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quiz_Students_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Quiz_Students" Type="Self.Quiz_Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz_Students">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quiz_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Quiz" Type="Self.Quiz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz">
+        <PropertyRef Name="subjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Subject_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Student_Subject" Type="Self.Student_Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student_Subject">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Subject_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Student_Subject" Type="Self.Student_Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student_Subject">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="Quiz" EntityType="Self.Quiz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quiz_Students" EntityType="Self.Quiz_Students" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Quiz_Students].[quizId] AS [quizId], 
+    [Quiz_Students].[studentId] AS [studentId], 
+    [Quiz_Students].[grade] AS [grade]
+    FROM [dbo].[Quiz_Students] AS [Quiz_Students]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Student_Subject" EntityType="Self.Student_Subject" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Student_Subject].[StudentId] AS [StudentId], 
+    [Student_Subject].[SubjectId] AS [SubjectId]
+    FROM [dbo].[Student_Subject] AS [Student_Subject]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Quiz_Students_Quiz" Association="Self.FK_Quiz_Students_Quiz">
+      <End Role="Quiz" EntitySet="Quiz" />
+      <End Role="Quiz_Students" EntitySet="Quiz_Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quiz_Students_Students" Association="Self.FK_Quiz_Students_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Quiz_Students" EntitySet="Quiz_Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quiz_Subject" Association="Self.FK_Quiz_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Quiz" EntitySet="Quiz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Subject_Students" Association="Self.FK_Student_Subject_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Student_Subject" EntitySet="Student_Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Subject_Subject" Association="Self.FK_Student_Subject_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Student_Subject" EntitySet="Student_Subject" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

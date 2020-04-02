@@ -1,0 +1,42 @@
+﻿Instalando ensamblado 'C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.InstallLog
+   assemblypath = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe
+Instalando el servicio Service1...
+Creando el origen de EventLog Service1 en el registro Application...
+Deshaciendo ensamblado 'C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.InstallLog
+   assemblypath = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe
+Restaurando el registro de eventos al estado anterior para el origen Service1.
+Excepción durante la fase de retroceso al estado original del instalador System.Diagnostics.EventLogInstaller.
+System.Security.SecurityException: No se encontró el origen, pero no se pudo buscar en algunos o todos los registros de eventos. Registros inaccesibles: Security.
+Excepción durante la fase de instalación de retroceso al estado original. Esta excepción se omitirá y se continuará con el retroceso al estado original. Sin embargo, puede que el equipo no recupere el estado inicial hasta que se haya completado esta fase.
+Instalando ensamblado 'C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.InstallLog
+   assemblypath = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe
+Instalando el servicio Service1...
+El servicio Service1 se ha instalado correctamente.
+Creando el origen de EventLog Service1 en el registro Application...
+Confirmando ensamblado 'C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.InstallLog
+   assemblypath = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe
+Instalando ensamblado 'C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.InstallLog
+   assemblypath = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe
+Instalando el servicio MediclassService...
+El servicio MediclassService se ha instalado correctamente.
+Creando el origen de EventLog MediclassService en el registro Application...
+Confirmando ensamblado 'C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.InstallLog
+   assemblypath = C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe

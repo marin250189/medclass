@@ -1,0 +1,238 @@
+﻿@{
+    ViewBag.Title = "AddStudents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Directorio de Alumos
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <table id="studentTable" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Genero</th>
+                                <th>Teléfono</th>
+
+                            </tr>
+                        </thead>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 col-md-offset-11">
+        <button class="btn btn-primary" type="submit" onclick="AddStudentToSubject()">Agregar</button>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Alumnos en la Asignatura : @ViewBag.Name
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <table id="studentSubject" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Genero</th>
+                                <th>Teléfono</th>
+
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 col-md-offset-11">
+        <button class="btn btn-primary" type="submit" onclick="DeleteStudentToSubject()">Eliminar</button>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Content/datatables.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap-dialog.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            var studentsubject = $('#studentSubject').dataTable({
+                "bServerSide": false,
+
+               // "sAjaxSource": "/Subject/StudentList",
+                "ajax": {
+                    "url": "/Subject/StudentList",
+                    "data": function ( d ) {
+                        d.subjectId = '@ViewBag.Id';
+                    }
+                },
+               
+                "bSearchable": true,
+                "bFilter": true,
+                "bInfo": true,
+                "aoColumns": [
+
+                                { "visible": false },
+                                { "sName": "Nombre", "bSortable": true },
+                                { "sName": "Apellido" },
+                                { "sName": "Edad" },
+                                { "sName": "Genero" },
+                                { "sName": "Telefono" }
+
+                ]
+            });
+
+            $('#studentSubject tbody').on('click', 'tr', function () {
+
+                student = studentsubject.fnGetData(this);
+                var id = student[0];
+                var index = $.inArray(id, deleted);
+
+                if (index === -1) {
+                    deleted.push(id);
+                } else {
+                    deleted.splice(index, 1);
+                }
+
+                $(this).toggleClass('selected');
+            });
+
+            var studenttable = $('#studentTable').dataTable({
+                "bServerSide": false,
+
+                // "sAjaxSource": "/Subject/StudentList",
+                "ajax": {
+                    "url": "/Subject/StudentAvaliable",
+                    "data": function (d) {
+                        d.subjectId = '@ViewBag.Id';
+                    }
+                },
+
+
+                "bSearchable": true,
+                "bFilter": true,
+                "bInfo": true,
+                "aoColumns": [
+
+                                { "visible": false },
+                                { "sName": "Nombre", "bSortable": true },
+                                { "sName": "Apellido" },
+                                { "sName": "Edad" },
+                                { "sName": "Genero" },
+                                { "sName": "Telefono" }
+
+                ]
+            });
+
+
+            $('#studentTable tbody').on('click', 'tr', function () {
+
+                student = studenttable.fnGetData(this);
+                var id = student[0];
+                var index = $.inArray(id, selected);
+
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
+
+                $(this).toggleClass('selected');
+            });
+
+        });
+        var selected = [];
+        var deleted = [];
+        function AddStudentToSubject() {
+
+            if (selected.length == 0) {
+                alert("Debe Seleccionar un estudiante.");
+            }
+            else {
+
+                fnAdd(selected);
+            }
+        }
+
+        function DeleteStudentToSubject() {
+
+            if (deleted.length == 0) {
+                alert("Debe Seleccionar un estudiante.");
+            }
+            else {
+
+                fnRemove(deleted);
+            }
+        }
+
+        function fnRemove(data) {
+            var id = '@ViewBag.Id';
+            var name = '@ViewBag.Name'
+
+
+            $.post('/Subject/DeleteStudentToSubject', $.param({ students: data, subjectId: '@ViewBag.Id' }, true), function (data) {
+
+                var error = data.Error;
+                var message = data.Message;
+                if (!error) {
+                    window.location = "/Subject/AddStudents/?subjectId=" + id + "&name=" + name.replace(' ', '%');
+                }
+                else {
+                    alert(message);
+                }
+            });
+
+
+
+        }
+
+
+        function fnAdd(data) {
+            var id = '@ViewBag.Id';
+            var name = '@ViewBag.Name'
+
+
+            $.post('/Subject/AddStudentToSubject', $.param({ students: data, subjectId: '@ViewBag.Id' }, true), function (data) {
+
+                var error = data.Error;
+                var message = data.Message;
+                if (!error) {
+                    window.location = "/Subject/AddStudents/?subjectId=" + id + "&name=" + name.replace(' ', '%');
+                }
+                else {
+                    alert(message);
+                }
+            });
+
+
+
+        }
+    </script>
+}

@@ -1,0 +1,34 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input id="nameId" type="text" class="form-control" name="firstNameEdit" value="@ViewBag.Name" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Año</label>
+                            @Html.DropDownList("yearId", (List<SelectListItem>)ViewBag.YearList, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // document.getElementById("firstNameId").value ="44";
+
+</script>

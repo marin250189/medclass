@@ -1,0 +1,102 @@
+﻿@model Domain.Students
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               Detalle 
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" name="firstName" value="@Model.firstName" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Apellido</label>
+                            <input type="text" class="form-control" name="lastName" value="@Model.lastName" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Sexo</label>
+                            <select class="form-control" name="gender" disabled>
+                                <option value="@Model.gender">@Model.gender</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Edad</label>
+                            <input type="number" class="form-control" name="age" value="@Model.age" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="number" class="form-control" name="phoneNumber" value="@Model.phoneNumber" readonly>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               Asignaturas
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <table id="studentTable" class="table table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                          
+                                <th>Nombre</th>
+                                <th>Año</th>                           
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{foreach (var item in Model.Subject)
+                              {
+                                  <tr>
+                                      <td>@item.Name</td>
+                                      <td>@item.year</td>
+                                  </tr>
+                              }
+                              }
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

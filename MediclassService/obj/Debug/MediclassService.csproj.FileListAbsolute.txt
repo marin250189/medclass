@@ -1,0 +1,10 @@
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe.config
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.exe
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\MediclassService.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\WcfService.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\bin\Debug\WcfService.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\obj\Debug\MediclassService.csprojResolveAssemblyReference.cache
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\obj\Debug\MediclassService.ProjectInstaller.resources
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\obj\Debug\MediclassService.csproj.GenerateResource.Cache
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\obj\Debug\MediclassService.exe
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\MediclassService\obj\Debug\MediclassService.pdb

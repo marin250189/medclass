@@ -1,0 +1,8 @@
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\bin\Debug\WcfService.dll.config
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\bin\Debug\WcfService.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\bin\Debug\WcfService.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\obj\Debug\WcfService.csprojResolveAssemblyReference.cache
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\obj\Debug\WcfService.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\obj\Debug\WcfService.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\WcfService\bin\Debug\Newtonsoft.Json.xml

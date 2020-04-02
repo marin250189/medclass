@@ -1,0 +1,8 @@
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Victor\Documents\Visual Studio 2013\Projects\MEDCLASS\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml

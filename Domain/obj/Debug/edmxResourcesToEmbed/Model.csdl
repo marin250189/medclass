@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user1" />
+    </Key>
+    <Property Name="user1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Quiz" EntityType="DBModel.Quiz" />
+    <EntitySet Name="Students" EntityType="DBModel.Students" />
+    <EntitySet Name="Subject" EntityType="DBModel.Subject" />
+    <EntitySet Name="Quiz_Students" EntityType="DBModel.Quiz_Students" />
+    <AssociationSet Name="FK_Quiz_Students_Quiz" Association="DBModel.FK_Quiz_Students_Quiz">
+      <End Role="Quiz" EntitySet="Quiz" />
+      <End Role="Quiz_Students" EntitySet="Quiz_Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quiz_Subject" Association="DBModel.FK_Quiz_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Quiz" EntitySet="Quiz" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quiz_Students_Students" Association="DBModel.FK_Quiz_Students_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Quiz_Students" EntitySet="Quiz_Students" />
+    </AssociationSet>
+    <AssociationSet Name="Student_Subject" Association="DBModel.Student_Subject">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Quiz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="subjectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Quiz_Students" Relationship="DBModel.FK_Quiz_Students_Quiz" FromRole="Quiz" ToRole="Quiz_Students" />
+    <NavigationProperty Name="Subject" Relationship="DBModel.FK_Quiz_Subject" FromRole="Quiz" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="phoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Quiz_Students" Relationship="DBModel.FK_Quiz_Students_Students" FromRole="Students" ToRole="Quiz_Students" />
+    <NavigationProperty Name="Subject" Relationship="DBModel.Student_Subject" FromRole="Students" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="Fixed" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="year" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Quiz" Relationship="DBModel.FK_Quiz_Subject" FromRole="Subject" ToRole="Quiz" />
+    <NavigationProperty Name="Students" Relationship="DBModel.Student_Subject" FromRole="Subject" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Quiz_Students">
+    <Key>
+      <PropertyRef Name="quizId" />
+      <PropertyRef Name="studentId" />
+      <PropertyRef Name="grade" />
+    </Key>
+    <Property Name="quizId" Type="Int32" Nullable="false" />
+    <Property Name="studentId" Type="Int32" Nullable="false" />
+    <Property Name="grade" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Quiz" Relationship="DBModel.FK_Quiz_Students_Quiz" FromRole="Quiz_Students" ToRole="Quiz" />
+    <NavigationProperty Name="Students" Relationship="DBModel.FK_Quiz_Students_Students" FromRole="Quiz_Students" ToRole="Students" />
+  </EntityType>
+  <Association Name="FK_Quiz_Students_Quiz">
+    <End Type="DBModel.Quiz" Role="Quiz" Multiplicity="1" />
+    <End Type="DBModel.Quiz_Students" Role="Quiz_Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz_Students">
+        <PropertyRef Name="quizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quiz_Subject">
+    <End Type="DBModel.Subject" Role="Subject" Multiplicity="1" />
+    <End Type="DBModel.Quiz" Role="Quiz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz">
+        <PropertyRef Name="subjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quiz_Students_Students">
+    <End Type="DBModel.Students" Role="Students" Multiplicity="1" />
+    <End Type="DBModel.Quiz_Students" Role="Quiz_Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz_Students">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Student_Subject">
+    <End Type="DBModel.Students" Role="Students" Multiplicity="*" />
+    <End Type="DBModel.Subject" Role="Subject" Multiplicity="*" />
+  </Association>
+</Schema>
